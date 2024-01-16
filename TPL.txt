@@ -1,0 +1,70 @@
+Exercice 1
+
+Q1. Les mots de passe sont stockés dans /etc/shadow en chiffrés, je ne peux les ouvrir que depuis root.
+
+Q2. adduser tata
+addgroup bidule
+adduser toto bidule
+adduser tata bidule
+
+Q3. Toto peut effectuer ses actions uniquement en sudo, sinon root peut aussi.
+
+Q4. usermod -aG sudo toto
+
+Q5. Le fichier /etc/shadow correspond à la liste des utilisateurs et leur mot de passes.
+
+Q6. userdel tata
+
+
+Exercice 2
+
+Q1. Un paquet dans le monde Unix est une archive de fichiers permettants d'installer un logiciel.
+
+Q2. Un gestionnaire de paquets est un outil servant à installer, mettre à jour ou désinstaller des paquets ou des logiciels.
+
+Q3. sudo apt install firefox-esr
+
+Q4. - Ajouter la clef de la repository:
+wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg \ | gpg --dearmor \ | sudo dd of=/usr/share/keyrings/vscodium-archive-keyring.gpg
+- Ajouter la repositery:
+echo 'deb [ signed-by=/usr/share/keyrings/vscodium-archive-keyring.gpg ] https://download.vscodium.com/debs vscodium main' \ | sudo tee /etc/apt/sources.list.d/vscodium.list
+-Installer la repositery:
+sudo apt update && sudo apt install codium
+
+source : https://vscodium.com/
+
+Q5. sudo apt remove pluma
+
+Q6. passage en root : su - 
+nano /etc/apt/sources.list
+"deb http://deb.debian.org/debian unstable main"
+
+Q8. apt-get install lxde
+
+Exercice 3
+
+Q1. On se met en root
+nano /etc/locale.gen
+on met un # devant le français pour ne plus qu'il soit compté, et on enlève celui devant l'anglais pour changer la langue
+on rafraichit avec la commande locale-gen
+le manuel est maintenant en anglais
+
+Q2. Pour afficher la liste des timezones: timedatectl list-timezones
+On la définit ensuite avec: sudo timedatectl set-timezone your_time_zone
+
+Q3. On peut ouvrir la config du clavier avec:
+dpkg-reconfigure keyboard-configuration
+et ensuite modifier les paramètres du clavier de manière permanante
+Pour modifier de manière temporaire, on utilise:
+localectl list-x11-keymap-layouts (pour voir la liste des layout existants)
+setxkbmap (code du layout, fr pour azerty) (pour set le layout)
+
+
+
+Exercice 4
+
+Q1. Une partition est une division de l'espace physique du disque, de manière à ce que les OS et les gestionnaires de fichiers les traitent comme des disques bien distincts
+Un disque doit au moins en avoir une pour être utilisable.
+
+Q2. Il y a 3 partitions, une primaire de 15G,et 2 étendue et swap de 975Mo chaque-une
+
